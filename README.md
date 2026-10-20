@@ -6,7 +6,7 @@
 
 ## 定位與設計準則
 
-agent 的定位、設計準則與 authoring 流程，以 [`claude-skills`](https://github.com/seon-kuraito/claude-skills) 中 [`sk-agent-author`](https://github.com/seon-kuraito/claude-skills/tree/main/skills/sk-agent-author) 的 `SKILL.md` 為唯一權威。
+agent 的定位、設計準則與 authoring 流程，以 [`claude-skills`](https://github.com/seonkuraito/claude-skills) 中 [`sk-agent-author`](https://github.com/seonkuraito/claude-skills/tree/main/skills/sk-agent-author) 的 `SKILL.md` 為唯一權威。
 
 　
 
@@ -25,7 +25,7 @@ Claude Code 會掃描 `~/.claude/agents/` 來探索可用的 agent；每個 agen
 ~/.claude/agents/<name>.md                                  ← symlink，逐檔建立
 ```
 
-與 [claude-skills](https://github.com/seon-kuraito/claude-skills)、[claude-hooks](https://github.com/seon-kuraito/claude-hooks) 相同，各 agent 會分別連結至執行環境，因此從任一路徑編輯時，修改的都是同一份檔案。直接安裝在 `~/.claude/agents/` 的第三方 agent 不會納入本 repo。
+與 [claude-skills](https://github.com/seonkuraito/claude-skills)、[claude-hooks](https://github.com/seonkuraito/claude-hooks) 相同，各 agent 會分別連結至執行環境，因此從任一路徑編輯時，修改的都是同一份檔案。直接安裝在 `~/.claude/agents/` 的第三方 agent 不會納入本 repo。
 
 　
 
@@ -52,7 +52,7 @@ scripts/run-checks.sh               # 全部 agent
 scripts/run-checks.sh <agent-name>  # 單一 agent
 ```
 
-這支腳本執行結構層與腳本層檢查，兩者都不消耗模型 token。agent 需要由模型路由，因此本 repo 除了四條共通規則，也實作 `description` 與 `model-cases` 兩條路由專屬規則，另以 `contract` 檢查 `tools` 與 `model` 是否宣告。模型層的觸發與行為案例由 [`sk-agent-author`](https://github.com/seon-kuraito/claude-skills/tree/main/skills/sk-agent-author) 在流程末端執行。共通規則來自 [claude-skills](https://github.com/seon-kuraito/claude-skills) 的 `sk-skill-author/references/verification.md`；並列 repo 不存在時會跳過規則比對。
+這支腳本執行結構層與腳本層檢查，兩者都不消耗模型 token。agent 需要由模型路由，因此本 repo 除了四條共通規則，也實作 `description` 與 `model-cases` 兩條路由專屬規則，另以 `contract` 檢查 `tools` 與 `model` 是否宣告。模型層的觸發與行為案例由 [`sk-agent-author`](https://github.com/seonkuraito/claude-skills/tree/main/skills/sk-agent-author) 在流程末端執行。共通規則來自 [claude-skills](https://github.com/seonkuraito/claude-skills) 的 `sk-skill-author/references/verification.md`；並列 repo 不存在時會跳過規則比對。
 
 `agents/` 為空時仍會執行規則比對，讓提交前的檢查能發現規格更新與 runner 實作不一致的情況。
 
